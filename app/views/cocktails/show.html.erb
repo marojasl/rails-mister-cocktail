@@ -1,3 +1,4 @@
+<br>
 <div class="container d-sm-flex justify-content-between pic-ing-rev">
 
   <div class="card-cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.photo, height: 800, width: 400, crop: :fill %>')">
@@ -31,14 +32,25 @@
 
     <div class="reviews">
       <h3>Reviews</h3>
-      <ul>
+      <p>
         <% @cocktail.reviews.each do |review| %>
-          <li><%= review.content %></li>
+          <% review.rating.times do |time| %>
+            <i class="fas fa-star"></i>
           <% end %>
-          <li>Review 2</li>
-      </ul>
+          <% (5 - review.rating).times do |time| %>
+            <i class="far fa-star"></i>
+          <% end %> -
+          <%= review.content %>
+      <% end %>
+    </p>
     </div>
 </div>
+
+
+
+
+
+
 
 
 <br>
