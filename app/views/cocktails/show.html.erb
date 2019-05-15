@@ -1,0 +1,61 @@
+<div class="container d-sm-flex justify-content-between pic-ing-rev">
+
+  <div class="card-cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.photo, height: 800, width: 400, crop: :fill %>')">
+    <%= @cocktail.name %>
+    <div class="edit">
+      <%= link_to edit_cocktail_path(@cocktail) do %>
+          <i class="far fa-edit"></i>
+      <% end %>
+      <%= link_to cocktail_path(@cocktail), method: :delete,data: { confirm: "Are you sure?" } do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </div>
+  </div>
+
+    <div class="ingredients">
+      <h3>Ingredients</h3>
+      <ul>
+          <% @cocktail.doses.each do |dose| %>
+          <li>
+            <%= dose.description %> - <%= dose.ingredient.name %> |
+            <%= link_to edit_dose_path(dose) do %>
+                <i class="far fa-edit"></i>
+            <% end %>
+            <%= link_to dose_path(dose), method: :delete,data: { confirm: "Are you sure?" } do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+
+    <div class="reviews">
+      <h3>Reviews</h3>
+      <ul>
+        <% @cocktail.reviews.each do |review| %>
+          <li><%= review.content %></li>
+          <% end %>
+          <li>Review 2</li>
+      </ul>
+    </div>
+</div>
+
+
+<br>
+<div class="dose-form container">
+  <h4>Add ingredient</h4>
+    <%= render "doses/form", cocktail: @cocktail, dose: Dose.new %>
+  <br>
+</div>
+
+<div class="review-form container">
+  <h2>Add review</h2>
+  <%= render "reviews/form", cocktail: @cocktail, review: Review.new %>
+</div>
+
+<div class="container">
+  <%= link_to 'Back', cocktails_path, class: "btn btn-outline-primary" %>
+</div>
+
+<%#= link_to 'Add new dose', new_cocktail_dose_path(@cocktail) %>
+

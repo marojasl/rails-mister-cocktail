@@ -1,0 +1,100 @@
+.card-cocktail {
+  background-size: cover;
+  background-position: top;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 0px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  width: 400px;
+  // flex-grow: 1;
+}
+
+.edit {
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  width: 40px;
+  display: flex;
+}
+
+.edit i {
+  padding: 2px;
+}
+
+.btn-outline-success {
+  color: green;
+  border-color: green;
+  &:hover {
+    background-color: green;
+    border-color: green;
+    color: white;
+  }
+}
+
+// .reviews {
+//   max-width: 10rem;
+// }
+// // if the screen size is smaller than 768 px then width = 80%
+// @media (max-width: 768px) {
+//   .card-cocktail {
+//     width: 80%;
+//   }
+// }
+
+
+.pic-ing-rev {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  // padding: 16px;
+  // flex-grow: 1;
+}
+
+.reviews, .ingredients, .card-cocktail  {
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .pic-ing-rev {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .pic-ing-rev {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .pic-ing-rev {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .pic-ing-rev {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .pic-ing-rev {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

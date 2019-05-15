@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>RailsMisterCocktail</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%# unless params[:controller] == "cocktails" && params[:action] == "home" %>
+      <%= render "shared/navbar" %>
+      <%# end %>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <% unless params[:controller] == "cocktails" && params[:action] == "home" %>
+    <%= render "shared/footer" %>
+    <% end %>
+
+
+    <!-- Me lodea todas mis paginas de una: -->
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-suppress-warning' : true %>
+    <!-- Me lodea cada pagina a la vez: -->
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>
