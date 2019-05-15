@@ -22,10 +22,15 @@ user = JSON.parse(user_serialized)
 
 Ingredient.destroy_all
 
-10.times do
-  ingredient = Ingredient.create(name: user['drinks'][rand(0..20)]["strIngredient1"])
+160.times do |x|
+  ingredient = Ingredient.create(name: user['drinks'][x]["strIngredient1"])
 end
 
 # user['drinks'].each do |hash|
 #   hash["strIngredient1"]
+# end
+
+# si quiero que coga random 10 de mi API:
+# 10.times do
+#   ingredient = Ingredient.create(name: user['drinks'][rand(0..20)]["strIngredient1"])
 # end

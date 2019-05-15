@@ -16,8 +16,9 @@
         <%= link_to "Add cocktail", new_cocktail_path, class: "btn btn-outline-success" %>
       </li>
       <li>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="/cocktails" method="get" class="form-inline">
+          <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+          <!-- <input type="submit"> -->
         </form>
       </li>
 

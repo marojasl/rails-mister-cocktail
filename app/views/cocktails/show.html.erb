@@ -7,7 +7,7 @@
       <%= link_to edit_cocktail_path(@cocktail) do %>
           <i class="far fa-edit"></i>
       <% end %>
-      <%= link_to cocktail_path(@cocktail), method: :delete,data: { confirm: "Are you sure?" } do %>
+      <%= link_to cocktail_path(@cocktail), method: :delete,data: { confirm: "Are you sure you want to delete this cocktail?" } do %>
         <i class="far fa-trash-alt"></i>
       <% end %>
     </div>
@@ -18,52 +18,61 @@
       <ul>
           <% @cocktail.doses.each do |dose| %>
           <li>
+          <p>
             <%= dose.description %> - <%= dose.ingredient.name %> |
             <%= link_to edit_dose_path(dose) do %>
-                <i class="far fa-edit"></i>
+              <i class="far fa-edit"></i>
             <% end %>
             <%= link_to dose_path(dose), method: :delete,data: { confirm: "Are you sure?" } do %>
               <i class="far fa-trash-alt"></i>
             <% end %>
+          </p>
           </li>
           <% end %>
       </ul>
+      <br>
+      <br>
+      <div class="dose-form container">
+        <h4>New ingredient</h4>
+          <%= render "doses/form", cocktail: @cocktail, dose: Dose.new %>
+        <br>
+      </div>
     </div>
 
     <div class="reviews">
       <h3>Reviews</h3>
-      <p>
-        <% @cocktail.reviews.each do |review| %>
-          <% review.rating.times do |time| %>
-            <i class="fas fa-star"></i>
+      <ul>
+          <% @cocktail.reviews.each do |review| %>
+            <li>
+              <% review.rating.times do |time| %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do |time| %>
+                <i class="far fa-star"></i>
+              <% end %> -
+              <%= review.content %>
+              <!-- | -->
+              <%#= link_to edit_review_path(review) do %>
+                  <!-- <i class="far fa-edit"></i> -->
+              <%# end %>
+              <%#= link_to review_path(review), method: :delete,data: { confirm: "Are you sure?" } do %>
+                <!-- <i class="far fa-trash-alt"></i> -->
+              <%# end %>
           <% end %>
-          <% (5 - review.rating).times do |time| %>
-            <i class="far fa-star"></i>
-          <% end %> -
-          <%= review.content %>
-      <% end %>
+            <li>
+      </ul>
     </p>
+    <br>
+    <br>
+    <div class="review-form container">
+      <h4>New review</h4>
+      <%= render "reviews/form", cocktail: @cocktail, review: Review.new %>
+    </div>
     </div>
 </div>
 
 
 
-
-
-
-
-
-<br>
-<div class="dose-form container">
-  <h4>Add ingredient</h4>
-    <%= render "doses/form", cocktail: @cocktail, dose: Dose.new %>
-  <br>
-</div>
-
-<div class="review-form container">
-  <h2>Add review</h2>
-  <%= render "reviews/form", cocktail: @cocktail, review: Review.new %>
-</div>
 
 <div class="container">
   <%= link_to 'Back', cocktails_path, class: "btn btn-outline-primary" %>
